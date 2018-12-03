@@ -1,0 +1,153 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  Generics.Collections,
+  System.StrUtils;
+
+var
+    A,B,C,D,E,F,G,groupie: array of integer;
+    ListKota,jalur:array of String;
+    kota:String;
+    minNilai,minIndex,I,J,xyz,jarak:integer;
+begin
+    A:=[0,6,4,4,20,12,8];
+    B:=[6,0,4,6,7,4,12];
+    C:=[4,4,0,12,8,9,4];
+    D:=[4,6,12,0,3,5,12];
+    E:=[20,7,8,3,0,8,8];
+    F:=[12,4,9,5,8,0,5];
+    G:=[8,12,4,12,8,5,0];
+    ListKota:=['A','B','C','D','E','F','G'];
+    groupie:=[0,2,4,5,1,2,3];
+    Insert('A',jalur,Length(jalur));
+    jarak:=0;
+    for I := 0 to Length(ListKota)-2  do
+    begin
+    minNilai:=1000;
+    minIndex:=100;
+      for J := 0 to Length(ListKota)-1 do
+      begin
+      if not MatchStr(ListKota[J], jalur) then
+        if(jalur[Length(jalur)-1]='A') then
+          begin
+          if(minNilai>((A[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=A[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',A[J]*10,'+',groupie[J]*5);
+          writeln(' =',((A[J]*10)+(groupie[J]*5)));
+          end
+        else if(jalur[Length(jalur)-1]='B') then
+          begin
+          if(minNilai>((B[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=B[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',B[J]*10,'+',groupie[J]*5);
+          writeln(' =',((B[J]*10)+(groupie[J]*5)));
+          end
+        else if(jalur[Length(jalur)-1]='C') then
+          begin
+          if(minNilai>((C[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=C[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',C[J]*10,'+',groupie[J]*5);
+          writeln(' =',((C[J]*10)+(groupie[J]*5)));
+          end
+        else if(jalur[Length(jalur)-1]='D') then
+          begin
+          if(minNilai>((D[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=D[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',D[J]*10,'+',groupie[J]*5);
+          writeln(' =',((D[J]*10)+(groupie[J]*5)));
+          end
+        else if(jalur[Length(jalur)-1]='E') then
+          begin
+          if(minNilai>((E[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=E[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',E[J]*10,'+',groupie[J]*5);
+          writeln(' =',((E[J]*10)+(groupie[J]*5)));
+          end
+        else if(jalur[Length(jalur)-1]='F') then
+          begin
+          if(minNilai>((F[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=F[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',F[J]*10,'+',groupie[J]*5);
+          writeln(' =',((F[J]*10)+(groupie[J]*5)));
+          end
+        else if(jalur[Length(jalur)-1]='G') then
+          begin
+          if(minNilai>((G[J]*10)+(groupie[J]*5))) then
+            begin
+            minNilai:=G[J]*10+groupie[J]*5;
+            minIndex:=J;
+            end;
+          write(ListKota[J],'=',G[J]*10,'+',groupie[J]*5);
+          writeln(' =',((G[J]*10)+(groupie[J]*5)));
+          end;
+      end;
+    writeln('----------------------');
+    writeln('Pilih ',ListKota[minIndex],'-',minNilai);
+    Insert(ListKota[minIndex],jalur,Length(jalur));
+    jarak:=jarak+minNilai;
+    writeln('----------------------');
+    end;
+
+    if(jalur[Length(jalur)-1]='B') then
+    begin
+    writeln('Kembali ke A +',jarak+B[0]*10 );
+    jarak:=jarak+B[0]*10;
+    end
+    else if(jalur[Length(jalur)-1]='C') then
+    begin
+    writeln('Kembali ke A +',jarak+C[0]*10 );
+    jarak:=jarak+C[0]*10;
+    end
+    else if(jalur[Length(jalur)-1]='D') then
+    begin
+    writeln('Kembali ke A +',jarak+D[0]*10 );
+    jarak:=jarak+D[0]*10;
+    end
+    else if(jalur[Length(jalur)-1]='E') then
+    begin
+    writeln('Kembali ke A +',jarak+E[0]*10 );
+    jarak:=jarak+E[0]*10;
+    end
+    else if(jalur[Length(jalur)-1]='F') then
+    begin
+    writeln('Kembali ke A +',jarak+F[0]*10 );
+    jarak:=jarak+F[0]*10;
+    end
+    else if(jalur[Length(jalur)-1]='G') then
+    begin
+    writeln('Kembali ke A +',jarak+G[0]*10 );
+    jarak:=jarak+G[0]*10;
+    end;
+
+    writeln('Rute Greedy');
+    for kota in jalur do
+      write(kota,'-');
+    Write('A');
+    writeln(jarak);
+    readln(kota);
+
+
+end.

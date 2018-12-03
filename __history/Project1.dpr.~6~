@@ -1,0 +1,103 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  Generics.Collections,
+  System.StrUtils;
+
+var
+    A,B,C,D,E,F,G,groupie: array of integer;
+    ListKota,jalur:array of String;
+    kota:String;
+    minNilai,minIndex,I,J,xyz,jarak:integer;
+begin
+    A:=[0,6,4,4,20,12,8];
+    B:=[6,0,4,6,7,4,12];
+    C:=[4,4,0,12,8,9,4];
+    D:=[4,6,12,0,3,5,12];
+    E:=[20,7,8,3,0,8,8];
+    F:=[12,4,9,5,8,0,5];
+    G:=[8,12,4,12,8,5,0];
+    ListKota:=['A','B','C','D','E','F','G'];
+    groupie:=[0,2,4,5,1,2,3];
+    Insert('A',jalur,Length(jalur));
+    jarak:=0;
+    for I := 0 to Length(ListKota)+1  do
+    begin
+    minNilai:=1000;
+    minIndex:=100;
+      for J := 0 to Length(ListKota)-1 do
+      begin
+      //writeln('-',J,'-',Length(ListKota)-1);
+      if not MatchStr(ListKota[J], jalur) then
+        if(jalur[Length(jalur)-1]='A') then
+          begin
+          if(minNilai>A[J]) then
+            begin
+            minNilai:=A[J];
+            minIndex:=J;
+            end;
+          end
+        else if(jalur[Length(jalur)-1]='B') then
+          begin
+          if(minNilai>B[J]) then
+            begin
+            minNilai:=B[J];
+            minIndex:=J;
+            end;
+          end
+        else if(jalur[Length(jalur)-1]='C') then
+          begin
+          if(minNilai>C[J]) then
+            begin
+            minNilai:=C[J];
+            minIndex:=J;
+            end;
+          end
+        else if(jalur[Length(jalur)-1]='D') then
+          begin
+          if(minNilai>D[J]) then
+            begin
+            minNilai:=D[J];
+            minIndex:=J;
+            end;
+          end
+        else if(jalur[Length(jalur)-1]='E') then
+          begin
+          if(minNilai>E[J]) then
+            begin
+            minNilai:=E[J];
+            minIndex:=J;
+            end;
+          end
+        else if(jalur[Length(jalur)-1]='F') then
+          begin
+          if(minNilai>A[J]) then
+            begin
+            minNilai:=A[J];
+            minIndex:=J;
+            end;
+          end
+        else if(jalur[Length(jalur)-1]='G') then
+          begin
+          if(minNilai>A[J]) then
+            begin
+            minNilai:=A[J];
+            minIndex:=J;
+            end;
+          end;
+      end;
+      Insert(ListKota[minIndex],jalur,Length(jalur));
+      //jarak:=jarak+minNilai;
+    end;
+    for kota in jalur do
+      writeln(kota);
+    //writeln(jarak);
+    readln(kota);
+
+
+end.
